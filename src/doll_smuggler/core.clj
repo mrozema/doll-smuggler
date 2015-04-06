@@ -111,5 +111,5 @@
         (println "Total Weight:" (total-weight names))
         (if (get options :chart) 
           (inspect-table names) 
-          (exit 0 "Goodbye and Good Luck!"))))))
+          (exit 0 "Good Luck! Don't get caught..."))))))
 
