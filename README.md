@@ -11,7 +11,7 @@ Produces the optimal set of drug-packed porcelain dolls which:
 * are within the total weight restriction
 * maximize the total street value of drugs delivered
 
-## Requirements:
+## Requirements
 * leiningen
 * org.clojure/clojure
 * clj-yaml
@@ -71,7 +71,7 @@ DOLLS:
 
 ### Tests
 _Oh yeah, tests..._  
-You can run the tests with  
+You can simply run the tests with:  
 `lein test`  
 
 **Output:**
