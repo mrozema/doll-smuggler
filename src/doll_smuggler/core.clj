@@ -8,8 +8,10 @@
             [clojure.tools.cli :refer [parse-opts]])
   (:gen-class))
 
+;; Forward declare memoized version
 (declare m-find-dolls)
 
+;; Program CLI options
 (def cli-options
   [
    ["-w" "--weight WEIGHT" "Maximum total weight (in lbs) for the dolls"
@@ -28,7 +30,8 @@
     :default-desc "Displays the results in a nice GUI"]
    ["-h" "--help"]])
 
-(defn usage 
+(defn usage
+  "Return usage string"
   [options-summary]
   (->> ["Welcome, Drug Smuggler."
         "I will help you find the optimum doll set for your mule!"
@@ -41,16 +44,23 @@
         "Please refer to the README for more information."]
        (string/join \newline)))
 
-(defn error-msg [errors]
+(defn error-msg 
+  "Print error message"
+  [errors]
   (str "The following errors occurred while parsing your command:\n\n"
        (string/join \newline errors)))
 
-(defn exit [status msg]
+(defn exit
+  "Exit and print a status"
+  [status msg]
   (println msg)
   (System/exit status))
 
-(defn find-dolls [idx weight dolls]
-   (cond
+(defn find-dolls 
+  "Finds the optimimum dolls, given a maximum weight and a source doll set
+  Algorithm based off [this] (http://rosettacode.org/wiki/Knapsack_problem/0-1#Clojure)"
+  [idx weight dolls]
+  (cond
     (< idx 0) [0 []]
     (= weight 0) [0 []]
     :else
@@ -66,14 +76,18 @@
 (def m-find-dolls (memoize find-dolls))
 
 (defn total-weight
+  "Calculates the total weight of the doll collection"
   [dolls]
   (get (apply merge-with + (for [x dolls] (select-keys x [:weight]))) :weight))
 
-(defn filter-by-index 
+(defn filter-by-index
+  "Using an input vector of list indexes, return a subset comprised of the
+  desired indexes"
   [coll idx]
   (map (partial nth coll) idx))
 
 (defn print-results
+  "Print retults using pretty-print's 'print-table', sorting by doll name"
   [results]
   (print-table [:name :weight :value] (sort-by :name results)))
 
