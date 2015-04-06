@@ -8,7 +8,7 @@
 (deftest yaml-read_sample-data
   (testing 
     "YAML Parsing of sample data from problem statement (test.yml)"
-  (let [doll-data (reader/read-yaml "resources/test.yml")]
+  (let [doll-data (reader/read-yaml "resources/doll-input.yml")]
   (is (= {:name "luke"    :weight 9   :value 150} (nth doll-data 0)))
   (is (= {:name "anthony" :weight 13  :value 35 } (nth doll-data 1)))
   (is (= {:name "candice" :weight 153 :value 200} (nth doll-data 2)))
