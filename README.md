@@ -1,6 +1,7 @@
+## Problem Statement
 You are a drug trafficker. Every day you meet with a different nice older lady (the mule) and find out how much weight she can carry in her handbag. You then meet with your supplier who has packed various drugs into a myriad of collectible porcelain dolls. Once packed with drugs, each of the precious dolls has a unique combination of weight and street value. Sometimes your supplier has more dolls than the nice lady can carry, though space in her handbag is never an issue. Your job is to choose which dolls the kind soul will carry, maximizing street value, while not going over her weight restriction.
 
-**Write a function in the [Clojure](http://clojure.org/) programming language** which given:
+Write a Clojure program, which given:
 
 * a set of dolls with a name and unique weight and value combination
 * an overall weight restriction
@@ -10,61 +11,78 @@ Produces the optimal set of drug-packed porcelain dolls which:
 * are within the total weight restriction
 * maximize the total street value of drugs delivered
 
-Requirements:
+## Requirements:
+* leiningen
+* org.clojure/clojure
+* clj-yaml
+* org.clojure/tools/cli  
 
-* use leiningen - https://github.com/technomancy/leiningen
-* include multiple high-level test cases to validate your solution (like the one included below)
-* provide instructions in a README for running your test suite from the command line
+These requirements are defined in `project.clj`
 
-Input:
+### Usage
+`doll-smuggler` can be run from the command-line, using `lein`. 
 
-    max weight: 400
+####Basic usage:
+Run the tool using the default data and produce a tabular output to stdout:  
+`lein run`  
 
-    available dolls:
+####Advanced usage: 
+There are several options available for `doll-smuggler`. The general syntax for supplying arguments is:  
+`lein run -m doll-smuggler.core <OPT1> <OPT2> ...`
+  
+**Options**
+```
+Options:
+  -w, --weight WEIGHT  Default: 400 lbs         Maximum total weight (in lbs) for the dolls
+  -f, --file FILEPATH  Default: doll-input.yml  Input file path (YAML). E.g. drug-stuff.yaml
+      --chart                                   Create a graphical chart of the calculated data
+  -h, --help
+```
 
-    name    weight value
-    luke        9   150
-    anthony    13    35
-    candice   153   200
-    dorothy    50   160
-    puppy      15    60
-    thomas     68    45
-    randal     27    60
-    april      39    40
-    nancy      23    30
-    bonnie     52    10
-    marc       11    70
-    kate       32    30
-    tbone      24    15
-    tranny     48    10
-    uma        73    40
-    grumpkin   42    70
-    dusty      43    75
-    grumpy     22    80
-    eddie       7    20
-    tory       18    12
-    sally       4    50
-    babe       30    10
+If no options are given, the defaults are:
+* max weight: 400 lbs 
+* default input file: resources/doll-input.yml
+* no GUI chart (results written to stdout)
 
-Result:
+**Examples**  
+*  Run the tool with a max weight of 300lbs, using file `resources/example.yml`:  
+    `lein run -m doll-smuggler.core -w 300 -f resources/example.yml`
 
-    packed dolls:
+*  Same as above, but show a GUI chart with the results:  
+    `lein run -m doll-smuggler.core -w 300 -f resources/example.yml --chart`  
 
-    name    weight value
-    sally       4    50
-    eddie       7    20
-    grumpy     22    80
-    dusty      43    75
-    grumpkin   42    70
-    marc       11    70
-    randal     27    60
-    puppy      15    60
-    dorothy    50   160
-    candice   153   200
-    anthony    13    35
-    luke        9   150
+**YAML Tips**  
+The defualt YAML file (`@/resources/doll-input.yml`) can be modified as needed, in case the doll weights/values must be updated.    
 
-Hint:
+You can also create a new YAML file (e.g. `example.yml`) and use the `-f <FILE>` switch to use this YAML file as the input. For example, if a different doll-set is used for a particular day, you could create several YAML files for each day (e.g. `doll-input-monday.yaml`, `doll-input-tuesday.yaml`, etc).   
 
-* read this - http://en.wikipedia.org/wiki/Knapsack_problem
+Below is the required format for the YAML input files:
+```yaml
+# List of dolls including name, weight, and value
+DOLLS:
+- name:   <string>
+  weight: <int>
+  value:  <int>
+- name:   <string>
+  weight: <int>
+  value:  <int>
+....
+```
+
+### Tests
+_Oh yeah, tests..._  
+You can run the tests with  
+`lein test`  
+
+**Output:**
+```
+$ lein test
+
+lein test doll-smuggler.core-test
+lein test doll-smuggler.doll_reader-test
+
+Ran 10 tests containing 24 assertions.
+0 failures, 0 errors.
+```
+_Protip: Read [this](http://en.wikipedia.org/wiki/Knapsack_problem) for more information about the analogous "Knapsack Problem"_
 
