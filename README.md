@@ -24,10 +24,12 @@ These requirements are defined in `project.clj`
 
 ####Basic usage:
 Run the tool using the default data and produce a tabular output to stdout:  
+  
 `lein run`  
 
 ####Advanced usage: 
 There are several options available for `doll-smuggler`. The general syntax for supplying arguments is:  
+  
 `lein run -m doll-smuggler.core <OPT1> <OPT2> ...`
   
 **Options**
@@ -46,9 +48,11 @@ If no options are given, the defaults are:
 
 **Examples**  
 *  Run the tool with a max weight of 300lbs, using file `resources/example.yml`:  
+    
     `lein run -m doll-smuggler.core -w 300 -f resources/example.yml`
 
 *  Same as above, but show a GUI chart with the results:  
+    
     `lein run -m doll-smuggler.core -w 300 -f resources/example.yml --chart`  
 
 **YAML Tips**  
