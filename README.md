@@ -19,7 +19,7 @@ Produces the optimal set of drug-packed porcelain dolls which:
 
 These requirements are defined in `project.clj`
 
-### Usage
+## Usage
 `doll-smuggler` can be run from the command-line, using `lein`. 
 
 ####Basic usage:
@@ -73,9 +73,10 @@ DOLLS:
 ....
 ```
 
-### Tests
+## Tests
 _Oh yeah, tests..._  
 You can simply run the tests with:  
+  
 `lein test`  
 
 **Output:**
