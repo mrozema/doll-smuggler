@@ -36,7 +36,7 @@
   (->> ["Welcome, Drug Smuggler."
         "I will help you find the optimum doll set for your mule!"
         ""
-        "Usage: doll-smuggler [options]"
+        "Usage: lein run -m doll-smuggler.core [OPTS]"
         ""
         "Options:"
         options-summary
