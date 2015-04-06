@@ -1,3 +1,4 @@
+[![Build Status](http://img.shields.io/travis/mrozema/doll-smuggler.svg)](https://travis-ci.org/mrozema/doll-smuggler)  
 ## Problem Statement
 You are a drug trafficker. Every day you meet with a different nice older lady (the mule) and find out how much weight she can carry in her handbag. You then meet with your supplier who has packed various drugs into a myriad of collectible porcelain dolls. Once packed with drugs, each of the precious dolls has a unique combination of weight and street value. Sometimes your supplier has more dolls than the nice lady can carry, though space in her handbag is never an issue. Your job is to choose which dolls the kind soul will carry, maximizing street value, while not going over her weight restriction.
 
