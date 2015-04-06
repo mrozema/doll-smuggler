@@ -27,6 +27,30 @@ Run the tool using the default data and produce a tabular output to stdout:
   
 `lein run`  
 
+**Basic Output**  
+```
+Dolls to pack:
+
+|    :name | :weight | :value |
+|----------+---------+--------|
+|  anthony |      13 |     35 |
+|  candice |     153 |    200 |
+|  dorothy |      50 |    160 |
+|    dusty |      43 |     75 |
+|    eddie |       7 |     20 |
+| grumpkin |      42 |     70 |
+|   grumpy |      22 |     80 |
+|     luke |       9 |    150 |
+|     marc |      11 |     70 |
+|    puppy |      15 |     60 |
+|   randal |      27 |     60 |
+|    sally |       4 |     50 |
+-------------------------------
+Total Value: 1030
+Total Weight: 396
+Good Luck! Don't get caught...
+```
+
 ####Advanced usage: 
 There are several options available for `doll-smuggler`. The general syntax for supplying arguments is:  
   
