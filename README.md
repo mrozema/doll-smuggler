@@ -11,6 +11,8 @@ Produces the optimal set of drug-packed porcelain dolls which:
 * are within the total weight restriction
 * maximize the total street value of drugs delivered
 
+_Protip: Read [this](http://en.wikipedia.org/wiki/Knapsack_problem) for more information about the analogous "Knapsack Problem"_
+
 ## Requirements
 * leiningen
 * org.clojure/clojure
@@ -113,5 +115,4 @@ lein test doll-smuggler.doll_reader-test
 Ran 10 tests containing 24 assertions.
 0 failures, 0 errors.
 ```
-_Protip: Read [this](http://en.wikipedia.org/wiki/Knapsack_problem) for more information about the analogous "Knapsack Problem"_
 
